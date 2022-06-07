@@ -43,6 +43,15 @@ class App extends Component {
     this.getCityList();
   }
 
+  getWeather = (city) => {
+    fetch(`/api/weather/${city}`)
+    .then(res => res.json())
+    .then(weather => {
+      console.log(weather);
+      this.setState({ weather });
+    });
+  }
+
   handleAddCity = () => {
     fetch('/api/cities', {
       method: 'post',
@@ -96,7 +105,7 @@ class App extends Component {
 
           </Col>
         </Row>
-        <Weather/>
+        
         <Weather data={this.state.weather}/>
       </Container>
   
