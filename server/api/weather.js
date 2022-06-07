@@ -11,6 +11,7 @@ router.get('/:city', (req, res) => {
       return res.json(err);
     return res.json(weather);
   });
+  
 });
 
 module.exports = router;
