@@ -43,6 +43,20 @@ class App extends Component {
     this.getCityList();
   }
 
+  handleAddCity = () => {
+    fetch('/api/cities', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ city: this.state.newCityName })
+    })
+    .then(res => res.json())
+    .then(res => {
+      this.getCityList();
+      this.setState({ newCityName: '' });
+    });
+  };
+
+
   render () {
     return (
       <Container fluid className="centered">
@@ -71,10 +85,19 @@ class App extends Component {
         </Row>
         <Row>
           <Col>
-  
+          <h1 className="display-5">Current Weather</h1>
+          <FormGroup>
+          <Input type="select" onChange={this.handleChangeCity}>
+                { this.state.cityList.length === 0 && <option>No cities added yet.</option> }
+                { this.state.cityList.length > 0 && <option>Select a city.</option> }
+                { this.state.cityList.map((city, i) => <option key={i}>{city}</option>) }
+              </Input>
+          </FormGroup>
+
           </Col>
         </Row>
         <Weather/>
+        <Weather data={this.state.weather}/>
       </Container>
   
     );
@@ -83,6 +106,8 @@ class App extends Component {
   
 
   
+
+
 };
 
   
