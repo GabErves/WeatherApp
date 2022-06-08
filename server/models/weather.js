@@ -1,15 +1,17 @@
 const request = require('request-promise');
-const API_KEY = `857ceab0f857892db337ec2d844d5acb`;
+const Cities = require('./cities');
+const API_KEY = ` b35ff6710b09ea0d9ed069e5ee0faa74`; // where the api key would go
 require('dotenv').config();
 
 
-class Weather {
+class Weather extends Cities {
 
-    static retrieveByCity (cityid, callback) {
-        
+    static retrieveByCity (city, callback) {
+    retrieveByCity(city,callback)
       request({
-        uri: `https://api.openweathermap.org/data/2.5/weather?id=${cityid}&appid=${API_KEY}`,
-        json: true
+        uri: `http://api.openweathermap.org/data/2.5/weather?id=${city}&APPID=b35ff6710b09ea0d9ed069e5ee0faa74`,
+        json: true,
+        data: { id: city }
       }).then((res) => {
 
         callback(res);
@@ -17,6 +19,10 @@ class Weather {
         console.log(err);
         callback({ error: 'Could not reach OpenWeatherMap API.' });
       });
+      
     }
-  }
+    // retrieveByCity(cityid,callback)
+
+}
+
   module.exports = Weather;
