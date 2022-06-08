@@ -15,6 +15,8 @@ class Database { // basic class that
       });
   
     }
+
+    
   
     query (query, ...args) {
       this._pool.connect((err, client, done) => {

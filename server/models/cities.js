@@ -13,6 +13,7 @@ class Cities {
       db.query('INSERT INTO cities (city_name) VALUES ($1)', [city], (err, res) => {
         if (err.error)
           return callback(err);
+        //   console.log(err);
         callback(res);
       });
     }

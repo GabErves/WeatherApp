@@ -15,9 +15,19 @@ router.post('/', (req, res) => {
   var city = req.body.city;
 
   Cities.insert(city, (err, result) => {
-    if (err)
-      return res.json(err);
+    //   console.log("hello");
+    if (err){
+        console.log(err);
+
+        console.log(res);
+        return res.json(err);
+        
+
+    }
+    // console.log("result");
+      
     return res.json(result);
+
   });
 });
 

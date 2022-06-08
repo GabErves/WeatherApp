@@ -4,9 +4,9 @@ import {
   Navbar,
   NavbarBrand,
   Row,
-  Jumbotron,
+  
   InputGroup,
-  InputGroupAddon,
+  
   Button,
   FormGroup,
   Input,
