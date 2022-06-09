@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Table } from 'reactstrap';
-import weathers from './weathers.png';
+// import weathers from './weathers.png';
 
 const Weather = (props) => {
     const { data } = props;
@@ -12,7 +12,7 @@ const Weather = (props) => {
         <Row className="weather">
             <Col sm="12" md={{ size: 4, offset: 4 }}>
             <h2>{data.name}</h2>
-            <img src={weathers} alt="Weather Icon"/>
+            {/* <img src={weathers} alt="Weather Icon"/> */}
             <span>{data.weather[0].main}</span>&nbsp;
             <span>{Math.floor(data.main.temp)}&deg;F</span>
             <Table>
@@ -22,6 +22,7 @@ const Weather = (props) => {
               <td>{Math.floor(data.wind.speed)} km/h</td>
             </tr>
             <tr>
+
               <td>Pressure</td>
               <td>{Math.floor(data.main.pressure)} hPa</td>
             </tr>
