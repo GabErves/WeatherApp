@@ -57,7 +57,8 @@ router.get('/:city', function (req, res) {
           return res.json(err);
         return res.json(weather);
       });  
-      
+    //   console.log("hello");
+
   var city = req.params.city;
 
   

@@ -35,6 +35,7 @@
 
 var express = require('express');
 var Cities = require('../models/cities');
+var Weather = require('../models/weather');
 
 var router = express.Router();
 
@@ -46,9 +47,9 @@ router.get('/', function (req, res) {
   });
 });
 
-router.post('/', function (req, res) {
+router.post('/:city', function (req, res) {
   var city = req.body.city;
-
+  
   
   Cities.insert(city, function (err, result) {
     if (err)
