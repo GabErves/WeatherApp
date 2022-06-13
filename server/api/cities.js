@@ -39,13 +39,28 @@ var Weather = require('../models/weather');
 
 var router = express.Router();
 
-router.get('/', function (req, res) {
-  Cities.retrieveAll(function (err, cities) {
-    if (err)
-      return res.json(err);
-    return res.json(cities);
+// router.get('/', function (req, res) {
+//   Cities.retrieveAll(function (err, cities) {
+//     if (err)
+//       return res.json(err);
+//     return res.json(cities);
+//   });
+// });
+
+
+router.get('/:city', function(req, res)  {
+
+    var city = req.params.city;
+  
+    console.log(city);
+  
+  Weather.retrieveByCity(city, function(err, weather)  {
+    if (err) 
+     return res.json(err);
+   return res.json(weather);
   });
-});
+  //var city = req.params.city;
+  });
 
 router.post('/:city', function (req, res) {
   var city = req.body.city;
