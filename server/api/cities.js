@@ -39,7 +39,7 @@ var Cities = require('../models/cities');
 
 var router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/:city', function (req, res) {
   Cities.retrieveAll(function (err, cities) {
     if (err)
       return res.json(err);
@@ -48,7 +48,6 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  var city = req.body.city;
   
   
   Cities.insert(city, function (err, result) {
@@ -56,6 +55,8 @@ router.post('/', function (req, res) {
       return res.json(err);
     return res.json(result);
   });
+
+  var city = req.body.city;
 });
 
 module.exports = router;
