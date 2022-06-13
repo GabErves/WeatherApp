@@ -102,6 +102,7 @@ class App extends Component {
           </FormGroup>
 
           </Col>
+          
         </Row>
         
         <Weather data={this.state.weather}/>
